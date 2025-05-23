@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "title": "Personal Portfolio Website",
+      "description": "A responsive portfolio website showcasing my skills, projects, and achievements. Built with HTML, CSS, and JavaScript.",
+      "link": "https://manojchavan.tech"
+    },
+    {
+      "title": "E-commerce T-Shirt Shop",
+      "description": "A fully functional e-commerce prototype for a t-shirt shop with cart functionality and product filtering.",
+      "link": "https://manojchavan.tech/shop.html"
+    },
+    {
+      "title": "Task Management App",
+      "description": "A React-based task management application with drag-and-drop functionality and local storage support."
+    },
+    {
+      "title": "Weather Dashboard",
+      "description": "A weather application that displays current conditions and forecasts using a weather API."
+    }
+  ]
+}

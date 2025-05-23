@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rogue Ink - Premium quality t-shirts with unique designs">
+  <meta name="keywords" content="t-shirts, shop, clothing, fashion, rogue ink">
+  <meta name="author" content="Manoj Chavan">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Rogue Ink - Trendy T-Shirts">
+  <meta property="og:image" content="https://manojchavan.tech/shop/images/social-preview.jpg">
+  <meta property="og:description" content="High quality cotton t-shirts with unique designs from Rogue Ink">
+  <meta property="og:url" content="https://manojchavan.tech/shop">
+  
+  <title>Rogue Ink | Trendy T-Shirts</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- DaisyUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../sashop.css">
+</head>
+<body>
+  <!-- Loading Spinner -->
+  <div id="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="logo">
+        <a href="../index.html" class="text-2xl font-bold text-primary">Rogue Ink</a>
+      </div>
+      
+      <nav class="flex items-center">
+        <div class="hamburger md:hidden" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+        
+        <ul class="nav-links hidden md:flex space-x-6" id="nav-links">
+          <li><a href="../index.html" class="flex items-center"><i class="fas fa-home mr-2"></i> Home</a></li>
+          <li><a href="#products" class="flex items-center"><i class="fas fa-tshirt mr-2"></i> Products</a></li>
+          <li><a href="#cart" class="flex items-center cart-link"><i class="fas fa-shopping-cart mr-2"></i> Cart <span id="cart-count" class="badge badge-primary ml-2">0</span></a></li>
+          <li><a href="#about" class="flex items-center"><i class="fas fa-info-circle mr-2"></i> About</a></li>
+        </ul>
+        
+        <button id="theme-toggle" class="ml-4 btn btn-ghost btn-sm">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero relative bg-gray-900 text-white py-20">
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="container mx-auto px-4 relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Trendy T-shirts for Everyone</h1>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">High quality cotton t-shirts with unique designs. 100% organic cotton, eco-friendly printing.</p>
+        <a href="#products" class="btn btn-primary btn-lg">Shop Now</a>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Collection</h2>
+        
+        <!-- Filter Options -->
+        <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+          <div class="flex gap-4 flex-wrap">
+            <select id="size-filter" class="select select-bordered">
+              <option value="">All Sizes</option>
+              <option value="S">Small (S)</option>
+              <option value="M">Medium (M)</option>
+              <option value="L">Large (L)</option>
+              <option value="XL">XL</option>
+            </select>
+            
+            <select id="price-filter" class="select select-bordered">
+              <option value="">All Prices</option>
+              <option value="0-500">Under ₹500</option>
+              <option value="500-1000">₹500 - ₹1000</option>
+              <option value="1000-1500">₹1000 - ₹1500</option>
+            </select>
+          </div>
+          
+          <div class="flex items-center gap-4">
+            <span class="hidden sm:inline">Sort by:</span>
+            <select id="sort-by" class="select select-bordered">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+          <!-- Products will be loaded from JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-base-100 shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+      <div class="p-4 h-full flex flex-col">
+        <div class="flex justify-between items-center border-b pb-4">
+          <h3 class="text-xl font-bold">Your Cart</h3>
+          <button id="close-cart" class="btn btn-circle btn-sm">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto py-4" id="cart-items">
+          <!-- Cart items will be added here -->
+        </div>
+        
+        <div class="border-t pt-4">
+          <div class="space-y-2 mb-4">
+            <div class="flex justify-between">
+              <span>Subtotal:</span>
+              <span>₹<span id="subtotal">0</span></span>
+            </div>
+            <div class="flex justify-between">
+              <span>Shipping:</span>
+              <span>₹<span id="shipping">50</span></span>
+            </div>
+            <div class="flex justify-between font-bold text-lg">
+              <span>Total:</span>
+              <span>₹<span id="total">50</span></span>
+            </div>
+          </div>
+          
+          <button id="checkout-btn" class="btn btn-primary w-full">Proceed to Checkout</button>
+          
+          <div class="mt-4 text-center">
+            <p class="text-sm">or <a href="#products" class="link" id="continue-shopping">Continue Shopping</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+      <div class="modal-box max-w-3xl">
+        <button id="close-checkout" class="btn btn-sm btn-circle absolute right-2 top-2">✕</button>
+        <h3 class="font-bold text-lg mb-4">Complete Your Purchase</h3>
+        
+        <div class="tabs">
+          <a class="tab tab-bordered tab-active">Shipping</a>
+          <a class="tab tab-bordered">Payment</a>
+          <a class="tab tab-bordered">Confirmation</a>
+        </div>
+        
+        <div class="mt-6">
+          <form id="checkout-form">
+            <!-- Shipping Step -->
+            <div id="shipping-step" class="checkout-step">
+              <h4 class="text-lg font-semibold mb-4">Shipping Information</h4>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">First Name</span>
+                  </label>
+                  <input type="text" class="input input-bordered" required>
+                </div>
+                
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Last Name</span>
+                  </label>
+                  <input type="text" class="input input-bordered" required>
+                </div>
+              </div>
+              
+              <div class="form-control mt-4">
+                <label class="label">
+                  <span class="label-text">Address</span>
+                </label>
+                <input type="text" class="input input-bordered" required>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">City</span>
+                  </label>
+                  <input type="text" class="input input-bordered" required>
+                </div>
+                
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">State</span>
+                  </label>
+                  <select class="select select-bordered" required>
+                    <option value="">Select State</option>
+                    <option>Maharashtra</option>
+                    <option>Delhi</option>
+                    <option>Karnataka</option>
+                    <option>Tamil Nadu</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">ZIP Code</span>
+                  </label>
+                  <input type="text" class="input input-bordered" required>
+                </div>
+              </div>
+              
+              <div class="form-control mt-4">
+                <label class="label">
+                  <span class="label-text">Phone Number</span>
+                </label>
+                <input type="tel" class="input input-bordered" required>
+              </div>
+              
+              <div class="form-control mt-4">
+                <label class="label">
+                  <span class="label-text">Email</span>
+                </label>
+                <input type="email" class="input input-bordered" required>
+              </div>
+              
+              <div class="form-control mt-6">
+                <label class="label cursor-pointer">
+                  <input type="checkbox" class="checkbox checkbox-primary">
+                  <span class="label-text ml-2">Save this information for next time</span>
+                </label>
+              </div>
+              
+              <div class="mt-8 flex justify-end">
+                <button type="button" class="btn btn-primary next-step">Continue to Payment</button>
+              </div>
+            </div>
+            
+            <!-- Payment Step -->
+            <div id="payment-step" class="checkout-step hidden">
+              <h4 class="text-lg font-semibold mb-4">Payment Method</h4>
+              
+              <div class="space-y-4">
+                <div class="form-control">
+                  <label class="label cursor-pointer">
+                    <input type="radio" name="payment-method" class="radio radio-primary" checked>
+                    <span class="label-text ml-2">Credit/Debit Card</span>
+                  </label>
+                </div>
+                
+                <div class="card-details bg-base-200 p-4 rounded-lg">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Card Number</span>
+                    </label>
+                    <input type="text" class="input input-bordered" placeholder="1234 5678 9012 3456">
+                  </div>
+                  
+                  <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="form-control">
+                      <label class="label">
+                        <span class="label-text">Expiration Date</span>
+                      </label>
+                      <input type="text" class="input input-bordered" placeholder="MM/YY">
+                    </div>
+                    
+                    <div class="form-control">
+                      <label class="label">
+                        <span class="label-text">CVV</span>
+                      </label>
+                      <input type="text" class="input input-bordered" placeholder="123">
+                    </div>
+                  </div>
+                  
+                  <div class="form-control mt-4">
+                    <label class="label">
+                      <span class="label-text">Name on Card</span>
+                    </label>
+                    <input type="text" class="input input-bordered">
+                  </div>
+                </div>
+                
+                <div class="form-control mt-4">
+                  <label class="label cursor-pointer">
+                    <input type="radio" name="payment-method" class="radio radio-primary">
+                    <span class="label-text ml-2">PayPal</span>
+                  </label>
+                </div>
+                
+                <div class="form-control mt-4">
+                  <label class="label cursor-pointer">
+                    <input type="radio" name="payment-method" class="radio radio-primary">
+                    <span class="label-text ml-2">Cash on Delivery</span>
+                  </label>
+                </div>
+              </div>
+              
+              <div class="mt-8 flex justify-between">
+                <button type="button" class="btn btn-ghost prev-step">Back</button>
+                <button type="button" class="btn btn-primary next-step">Review Order</button>
+              </div>
+            </div>
+            
+            <!-- Confirmation Step -->
+            <div id="confirmation-step" class="checkout-step hidden">
+              <h4 class="text-lg font-semibold mb-4">Order Summary</h4>
+              
+              <div class="bg-base-200 p-4 rounded-lg">
+                <div class="flex justify-between mb-2">
+                  <span>Subtotal:</span>
+                  <span>₹<span id="checkout-subtotal">0</span></span>
+                </div>
+                <div class="flex justify-between mb-2">
+                  <span>Shipping:</span>
+                  <span>₹<span id="checkout-shipping">50</span></span>
+                </div>
+                <div class="flex justify-between font-bold">
+                  <span>Total:</span>
+                  <span>₹<span id="checkout-total">50</span></span>
+                </div>
+              </div>
+              
+              <div class="mt-6">
+                <h5 class="font-semibold mb-2">Shipping to:</h5>
+                <p id="shipping-address">Loading address...</p>
+              </div>
+              
+              <div class="mt-6">
+                <h5 class="font-semibold mb-2">Payment Method:</h5>
+                <p id="payment-method">Loading payment method...</p>
+              </div>
+              
+              <div class="form-control mt-6">
+                <label class="label cursor-pointer">
+                  <input type="checkbox" class="checkbox checkbox-primary" required>
+                  <span class="label-text ml-2">I agree to the <a href="#" class="link">Terms & Conditions</a></span>
+                </label>
+              </div>
+              
+              <div class="mt-8 flex justify-between">
+                <button type="button" class="btn btn-ghost prev-step">Back</button>
+                <button type="submit" class="btn btn-primary">Place Order</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div id="success-modal" class="modal">
+      <div class="modal-box text-center">
+        <div class="text-green-500 text-6xl mb-4">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Order Successful!</h3>
+        <p class="py-4">Thank you for your purchase. Your order has been placed successfully.</p>
+        <p class="mb-4">Order ID: <span class="font-bold">#ORD12345</span></p>
+        <p class="mb-6">We've sent a confirmation email with your order details.</p>
+        <div class="flex justify-center gap-4">
+          <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+          <a href="../index.html" class="btn btn-ghost">Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-base-200">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">About Rogue Ink</h2>
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <p class="mb-6">Welcome to Rogue Ink, where we combine quality and style to bring you the best t-shirts at affordable prices. All our products are made from 100% organic cotton and printed with eco-friendly inks.</p>
+          <p>Our mission is to provide unique, comfortable, and sustainable clothing that makes you look good and feel good about your purchase.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body items-center text-center">
+              <div class="text-4xl text-primary mb-4">
+                <i class="fas fa-truck"></i>
+              </div>
+              <h3 class="card-title mb-2">Fast Shipping</h3>
+              <p>Delivery within 3-5 business days. Free shipping on orders over ₹1000.</p>
+            </div>
+          </div>
+          
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body items-center text-center">
+              <div class="text-4xl text-primary mb-4">
+                <i class="fas fa-undo"></i>
+              </div>
+              <h3 class="card-title mb-2">Easy Returns</h3>
+              <p>30-day return policy. No questions asked if you're not satisfied.</p>
+            </div>
+          </div>
+          
+          <div class="card bg-base-100 shadow-md">
+            <div class="card-body items-center text-center">
+              <div class="text-4xl text-primary mb-4">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3 class="card-title mb-2">Eco-Friendly</h3>
+              <p>Sustainable materials and ethical manufacturing processes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer p-10 bg-neutral text-neutral-content">
+    <div>
+      <span class="footer-title">Shop</span> 
+      <a href="#products" class="link link-hover">All Products</a>
+      <a href="#" class="link link-hover">New Arrivals</a>
+      <a href="#" class="link link-hover">Best Sellers</a>
+      <a href="#" class="link link-hover">Sale Items</a>
+    </div> 
+    <div>
+      <span class="footer-title">Company</span> 
+      <a href="#about" class="link link-hover">About us</a>
+      <a href="#" class="link link-hover">Contact</a>
+      <a href="#" class="link link-hover">Careers</a>
+      <a href="#" class="link link-hover">Press kit</a>
+    </div> 
+    <div>
+      <span class="footer-title">Legal</span> 
+      <a href="../privacy.html" class="link link-hover">Privacy policy</a>
+      <a href="../terms.html" class="link link-hover">Terms of use</a>
+      <a href="#" class="link link-hover">Cookie policy</a>
+    </div>
+    <div>
+      <span class="footer-title">Newsletter</span> 
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Enter your email address</span>
+        </label> 
+        <div class="relative">
+          <input type="text" placeholder="username@site.com" class="input input-bordered w-full pr-16"> 
+          <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Product data with more details
+    const products = [
+      {
+        id: 1,
+        name: "Cool T-shirts",
+        price: 499,
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["Red", "Blue", "Black"],
+        image: "faith-yarn-hgtWvsq5e2c-unsplash.jpg",
+        description: "A comfortable cotton t-shirt with a cool graphic print. Perfect for casual outings.",
+        material: "100% Organic Cotton",
+        fit: "Regular Fit",
+        category: "Graphic Tees",
+        stock: 15,
+        rating: 4.5,
+        reviews: 28,
+        isNew: true
+      },
+      {
+        id: 2,
+        name: "Clever Tee",
+        price: 599,
+        sizes: ["M", "L", "XL"],
+        colors: ["White", "Gray"],
+        image: "laura-oliveira-Q8VpY_n2EAo-unsplash.jpg",
+        description: "A stylish t-shirt with a clever slogan. Made from premium quality cotton.",
+        material: "100% Organic Cotton",
+        fit: "Slim Fit",
+        category: "Slogan Tees",
+        stock: 8,
+        rating: 4.2,
+        reviews: 15,
+        isNew: false
+      },
+      {
+        id: 3,
+        name: "Vintage Tee",
+        price: 699,
+        sizes: ["S", "M", "L"],
+        colors: ["Black", "White"],
+        image: "marlon-alves-A0mSSCEVh9A-unsplash.jpg",
+        description: "Vintage inspired t-shirt with retro graphics. Soft and comfortable fabric.",
+        material: "100% Organic Cotton",
+        fit: "Oversized Fit",
+        category: "Vintage Tees",
+        stock: 5,
+        rating: 4.7,
+        reviews: 32,
+        isNew: true
+      },
+      {
+        id: 4,
+        name: "Minimalist Tee",
+        price: 549,
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["White", "Black", "Navy"],
+        image: "mediamodifier-ogmenj2NGho-unsplash.jpg",
+        description: "Simple and elegant minimalist design. Goes well with everything.",
+        material: "100% Organic Cotton",
+        fit: "Regular Fit",
+        category: "Basic Tees",
+        stock: 20,
+        rating: 4.3,
+        reviews: 45,
+        isNew: false
+      },
+      {
+        id: 5,
+        name: "Graphic Tee",
+        price: 649,
+        sizes: ["M", "L"],
+        colors: ["Red", "Black"],
+        image: "mediamodifier-7cERndkOyDw-unsplash.jpg",
+        description: "Bold graphic print t-shirt. 100% organic cotton.",
+        material: "100% Organic Cotton",
+        fit: "Regular Fit",
+        category: "Graphic Tees",
+        stock: 12,
+        rating: 4.6,
+        reviews: 23,
+        isNew: true
+      },
+      {
+        id: 6,
+        name: "Striped Tee",
+        price: 749,
+        sizes: ["S", "M", "XL"],
+        colors: ["Blue/White", "Black/White"],
+        image: "nikhil-uttam--FVDX_HjTy0-unsplash.jpg",
+        description: "Classic striped t-shirt. Perfect for layering or wearing alone.",
+        material: "100% Organic Cotton",
+        fit: "Slim Fit",
+        category: "Striped Tees",
+        stock: 7,
+        rating: 4.4,
+        reviews: 18,
+        isNew: false
+      }
+    ];
+
+    // Cart functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // DOM elements
+    const productGrid = document.getElementById('product-grid');
+    const cartItems = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const subtotalEl = document.getElementById('subtotal');
+    const shippingEl = document.getElementById('shipping');
+    const totalEl = document.getElementById('total');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const closeCartBtn = document.getElementById('close-cart');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const sizeFilter = document.getElementById('size-filter');
+    const priceFilter = document.getElementById('price-filter');
+    const sortBy = document.getElementById('sort-by');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const themeToggle = document.getElementById('theme-toggle');
+    const continueShopping = document.getElementById('continue-shopping');
+    const checkoutModal = document.getElementById('checkout-modal');
+    const closeCheckout = document.getElementById('close-checkout');
+    const successModal = document.getElementById('success-modal');
+    const checkoutForm = document.getElementById('checkout-form');
+    const checkoutSteps = document.querySelectorAll('.checkout-step');
+    const nextStepBtns = document.querySelectorAll('.next-step');
+    const prevStepBtns = document.querySelectorAll('.prev-step');
+    const shippingAddress = document.getElementById('shipping-address');
+    const paymentMethod = document.getElementById('payment-method');
+    const checkoutSubtotal = document.getElementById('checkout-subtotal');
+    const checkoutShipping = document.getElementById('checkout-shipping');
+    const checkoutTotal = document.getElementById('checkout-total');
+
+    // Initialize the shop
+    function initShop() {
+      renderProducts();
+      renderCart();
+      updateCartCount();
+      
+      // Load theme preference
+      const currentTheme = localStorage.getItem('shopTheme') || 'light';
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '☀️';
+      }
+      
+      // Event listeners
+      setupEventListeners();
+    }
+
+    // Render products with filtering and sorting
+    function renderProducts() {
+      productGrid.innerHTML = '';
+      
+      const sizeFilterValue = sizeFilter.value;
+      const priceFilterValue = priceFilter.value;
+      const sortByValue = sortBy.value;
+      
+      // Filter products
+      let filteredProducts = products.filter(product => {
+        // Size filter
+        if (sizeFilterValue && !product.sizes.includes(sizeFilterValue)) return false;
+        
+        // Price filter
+        if (priceFilterValue) {
+          const [min, max] = priceFilterValue.split('-').map(Number);
+          if (max && (product.price < min || product.price > max)) return false;
+          if (!max && product.price > min) return false;
+        }
+        
+        return true;
+      });
+      
+      // Sort products
+      filteredProducts.sort((a, b) => {
+        switch(sortByValue) {
+          case 'price-low': return a.price - b.price;
+          case 'price-high': return b.price - a.price;
+          case 'newest': 
+            if (a.isNew && !b.isNew) return -1;
+            if (!a.isNew && b.isNew) return 1;
+            return 0;
+          default: return 0; // featured
+        }
+      });
+      
+      // Render products
+      filteredProducts.forEach(product => {
+        const productEl = document.createElement('div');
+        productEl.className = 'card bg-base-100 shadow-md hover:shadow-xl transition-shadow';
+        productEl.innerHTML = `
+          <figure class="px-4 pt-4">
+            <img src="${product.image}" alt="${product.name}" class="rounded-xl h-64 w-full object-cover" loading="lazy">
+            ${product.isNew ? '<div class="badge badge-secondary absolute top-6 right-6">NEW</div>' : ''}
+          </figure>
+          <div class="card-body">
+            <div class="flex justify-between items-start">
+              <h2 class="card-title">${product.name}</h2>
+              <div class="badge badge-primary">₹${product.price}</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="rating rating-sm">
+                ${Array(5).fill().map((_, i) => 
+                  `<input type="radio" name="rating-${product.id}" class="mask mask-star-2 ${i < Math.floor(product.rating) ? 'bg-orange-400' : 'bg-gray-300'}" ${i === Math.floor(product.rating) - 1 ? 'checked' : ''} disabled>`).join('')}
+              </div>
+              <span class="text-sm ml-2">(${product.reviews})</span>
+            </div>
+            <p class="text-sm">${product.description.substring(0, 80)}...</p>
+            <div class="mt-2">
+              <span class="text-sm">Sizes: ${product.sizes.join(', ')}</span>
+            </div>
+            <div class="card-actions justify-between mt-4">
+              <button class="btn btn-sm btn-outline view-details" data-id="${product.id}">Details</button>
+              <button class="btn btn-sm btn-primary add-to-cart" data-id="${product.id}">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        productGrid.appendChild(productEl);
+      });
+    }
+
+    // Render cart with items
+    function renderCart() {
+      cartItems.innerHTML = '';
+      
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="text-center py-8">Your cart is empty</p>';
+        subtotalEl.textContent = '0';
+        shippingEl.textContent = '0';
+        totalEl.textContent = '0';
+        return;
+      }
+      
+      let subtotal = 0;
+      
+      cart.forEach((item, index) => {
+        const product = products.find(p => p.id === item.id);
+        subtotal += product.price * item.quantity;
+        
+        const cartItem = document.createElement('div');
+        cartItem.className = 'flex items-start gap-4 py-4 border-b';
+        cartItem.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded">
+          <div class="flex-1">
+            <h4 class="font-medium">${product.name}</h4>
+            <p class="text-sm">₹${product.price} x ${item.quantity}</p>
+            <p class="text-sm">Size: ${item.size || 'M'}</p>
+          </div>
+          <button class="btn btn-sm btn-circle btn-ghost remove-item" data-index="${index}">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        cartItems.appendChild(cartItem);
+      });
+      
+      const shipping = subtotal > 1000 ? 0 : 50;
+      const total = subtotal + shipping;
+      
+      subtotalEl.textContent = subtotal;
+      shippingEl.textContent = shipping;
+      totalEl.textContent = total;
+      
+      // Update checkout summary
+      if (checkoutSubtotal) {
+        checkoutSubtotal.textContent = subtotal;
+        checkoutShipping.textContent = shipping;
+        checkoutTotal.textContent = total;
+      }
+    }
+
+    // Update cart count in header
+    function updateCartCount() {
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCount.textContent = count;
+    }
+
+    // Add item to cart
+    function addToCart(productId, size = 'M') {
+      const product = products.find(p => p.id === productId);
+      
+      if (!product) return;
+      
+      const existingItem = cart.find(item => item.id === productId && item.size === size);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: productId,
+          quantity: 1,
+          size: size
+        });
+      }
+      
+      saveCart();
+      renderCart();
+      updateCartCount();
+      showCart();
+    }
+
+    // Remove item from cart
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+      updateCartCount();
+    }
+
+    // Save cart to localStorage
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Show cart sidebar
+    function showCart() {
+      cartSidebar.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Hide cart sidebar
+    function hideCart() {
+      cartSidebar.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    // Show checkout modal
+    function showCheckout() {
+      checkoutModal.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Hide checkout modal
+    function hideCheckout() {
+      checkoutModal.classList.remove('modal-open');
+      document.body.style.overflow = '';
+    }
+
+    // Show success modal
+    function showSuccess() {
+      successModal.classList.add('modal-open');
+    }
+
+    // Hide success modal
+    function hideSuccess() {
+      successModal.classList.remove('modal-open');
+    }
+
+    // Handle checkout steps navigation
+    function handleCheckoutSteps() {
+      nextStepBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const currentStep = btn.closest('.checkout-step');
+          const nextStepId = btn.classList.contains('next-step') ? 
+            currentStep.id.replace('shipping', 'payment').replace('payment', 'confirmation') : 
+            currentStep.id.replace('payment', 'shipping').replace('confirmation', 'payment');
+          
+          const nextStep = document.getElementById(nextStepId);
+          
+          if (nextStep) {
+            currentStep.classList.add('hidden');
+            nextStep.classList.remove('hidden');
+            
+            // Update shipping address preview
+            if (nextStepId === 'confirmation-step') {
+              const formData = new FormData(checkoutForm);
+              const address = `
+                ${formData.get('firstName')} ${formData.get('lastName')}<br>
+                ${formData.get('address')}<br>
+                ${formData.get('city')}, ${formData.get('state')} ${formData.get('zip')}
+              `;
+              shippingAddress.innerHTML = address;
+              
+              const payment = formData.get('payment-method') || 'Credit Card';
+              paymentMethod.textContent = payment;
+            }
+          }
+          
+          // If we're on the last step and user clicks "Place Order"
+          if (btn.type === 'submit') {
+            handleOrderSubmission();
+          }
+        });
+      });
+      
+      prevStepBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const currentStep = btn.closest('.checkout-step');
+          const prevStepId = currentStep.id.replace('payment', 'shipping').replace('confirmation', 'payment');
+          const prevStep = document.getElementById(prevStepId);
+          
+          if (prevStep) {
+            currentStep.classList.add('hidden');
+            prevStep.classList.remove('hidden');
+          }
+        });
+      });
+    }
+
+    // Handle order submission
+    function handleOrderSubmission() {
+      // In a real app, you would send this data to your backend
+      const orderData = {
+        items: cart,
+        total: totalEl.textContent,
+        customerInfo: new FormData(checkoutForm)
+      };
+      
+      console.log('Order submitted:', orderData);
+      
+      // Clear cart
+      cart = [];
+      saveCart();
+      renderCart();
+      updateCartCount();
+      
+      // Show success message
+      hideCheckout();
+      showSuccess();
+    }
+
+    // Setup all event listeners
+    function setupEventListeners() {
+      // Product grid events
+      productGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('add-to-cart')) {
+          const productId = parseInt(e.target.closest('button').getAttribute('data-id'));
+          addToCart(productId);
+        }
+        
+        if (e.target.classList.contains('view-details')) {
+          const productId = parseInt(e.target.closest('button').getAttribute('data-id'));
+          showProductDetails(productId);
+        }
+      });
+
+      // Cart events
+      cartItems.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+          const index = parseInt(e.target.closest('button').getAttribute('data-index'));
+          removeFromCart(index);
+        }
+      });
+
+      // Cart sidebar events
+      closeCartBtn.addEventListener('click', hideCart);
+      continueShopping.addEventListener('click', hideCart);
+      checkoutBtn.addEventListener('click', () => {
+        hideCart();
+        showCheckout();
+      });
+
+      // Filter events
+      sizeFilter.addEventListener('change', renderProducts);
+      priceFilter.addEventListener('change', renderProducts);
+      sortBy.addEventListener('change', renderProducts);
+
+      // Hamburger menu
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('hidden');
+        hamburger.classList.toggle('active');
+      });
+
+      // Theme toggle
+      themeToggle.addEventListener('click', () => {
+        const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('shopTheme', newTheme);
+        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+
+      // Checkout modal events
+      closeCheckout.addEventListener('click', hideCheckout);
+      checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        handleOrderSubmission();
+      });
+
+      // Navigation to cart
+      document.querySelectorAll('.cart-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          showCart();
+        });
+      });
+
+      // Handle checkout steps
+      handleCheckoutSteps();
+    }
+
+    // Close loading spinner
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading-spinner').style.display = 'none';
+      }, 1000);
+    });
+
+    // Initialize the shop
+    document.addEventListener('DOMContentLoaded', initShop);
+  </script>
+</body>
+</html>

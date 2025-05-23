@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Improved Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manoj Chavan - Full Stack Developer Portfolio showcasing projects, skills, and achievements">
+  <meta name="keywords" content="Manoj Chavan, Portfolio, Web Developer, Full Stack Developer, JavaScript, React, Node.js">
+  <meta name="author" content="Manoj Chavan">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Manoj Chavan | Full Stack Developer">
+  <meta property="og:image" content="https://manojchavan.tech/images/profile.jpg">
+  <meta property="og:description" content="Personal portfolio of Manoj Chavan, a Full Stack Developer from India.">
+  <meta property="og:url" content="https://manojchavan.tech">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Manoj Chavan | Full Stack Developer">
+  <meta name="twitter:description" content="Personal portfolio of Manoj Chavan, a Full Stack Developer from India.">
+  <meta name="twitter:image" content="https://manojchavan.tech/images/profile.jpg">
+  
+  <meta name="theme-color" content="#6e8efb">
+
+  <title>Manoj Chavan | Full Stack Developer Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- DaisyUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="sastyle.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Cookie Consent -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+</head>
+<body>
+  <!-- Loading Spinner -->
+  <div id="loading-spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hi, I'm Manoj Chavan — Building the future, one line of code at a time.</p>
+    <a href="shop.html" class="btn btn-primary shop-link">Visit My Shop</a>
+    
+    <!-- Day Navigation Buttons -->
+    <div class="day-navigation">
+      <div class="btn-group">
+        <a href="https://chavanmanoj.github.io/day1/" class="btn btn-outline">Day 1</a>
+        <a href="https://chavanmanoj.github.io/" class="btn btn-outline">Day 2</a>
+        <a href="https://chavanmanoj.github.io/DAY3/" class="btn btn-outline">Day 3</a>
+        <a href="https://chavanmanoj.github.io/day4/" class="btn btn-outline">Day 4</a>
+        <a href="" class="btn btn-outline">Day 5</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <button id="theme-toggle" class="btn btn-ghost">🌙 Toggle Theme</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#projects">Projects</a>
+      <a href="#goals">Goals</a>
+      <a href="#personal">Personal</a>
+      <a href="#contact">Contact</a>
+      <a href="shop.html">Shop</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Welcome Section -->
+    <section id="welcome">
+      <h2>This is Manoj Chavan</h2>
+      <img src="images.jpg" alt="Manoj Chavan smiling in front of a wall" class="profile-pic" loading="lazy">
+      <p>I'm <strong>Manoj Chavan</strong>, passionate about solving real-world problems through creative code and bold ideas.</p>
+      
+      <!-- Social Share Buttons -->
+      <div class="share-buttons">
+        <p>Share my portfolio:</p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://manojchavan.tech" target="_blank" class="btn btn-circle btn-sm"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20portfolio%20by%20Manoj%20Chavan&url=https://manojchavan.tech" target="_blank" class="btn btn-circle btn-sm"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://manojchavan.tech&title=Manoj%20Chavan%20Portfolio&summary=Full%20Stack%20Developer%20Portfolio" target="_blank" class="btn btn-circle btn-sm"><i class="fab fa-linkedin-in"></i></a>
+        <a href="whatsapp://send?text=Check%20out%20this%20portfolio%20https://manojchavan.tech" target="_blank" class="btn btn-circle btn-sm"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+      <h2>About Me</h2>
+      <ul>
+        <li><strong>Name:</strong> Manoj Chavan</li>
+        <li><strong>Location:</strong> Boisar, Maharashtra, India</li>
+        <li><strong>Education:</strong> B.E. in Computer Engineering, St. John College of Engineering</li>
+        <li><strong>Skills:</strong> JavaScript, React, Node.js, Python, SQL, HTML/CSS</li>
+        <li><strong>Experience:</strong> Intern at Raw Engineering (2023)</li>
+      </ul>
+    </section>
+
+    <!-- Video -->
+    <section id="video">
+      <h2>My Journey</h2>
+      <div class="video-container">
+        <iframe width="700" height="300" src="https://www.youtube.com/embed/UeC9-5o22aU" title="Mumbai City Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Completed Full Stack Development Bootcamp (2023)</li>
+        <li>2nd Prize - Technical Paper Presentation Competition</li>
+        <li>10+ online certifications in web development</li>
+        <li>Open Source Contributor to 5+ projects</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Projects will be loaded from JavaScript -->
+      </div>
+    </section>
+
+    <!-- Goals -->
+    <section id="goals">
+      <h2>Future Goals</h2>
+      <p>My mission is to become a full-stack developer and build technology that solves real-world problems.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>2024</h3>
+          <p>Master React and Node.js ecosystem</p>
+          <p>Build 3 full-stack applications</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2025</h3>
+          <p>Develop a SaaS product</p>
+          <p>Contribute to major open source projects</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2026</h3>
+          <p>Launch my own tech startup</p>
+          <p>Mentor aspiring developers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal -->
+    <section id="personal">
+      <h2>More About Me</h2>
+      <ul>
+        <li><strong>Hobbies:</strong> Reading tech blogs, Open source contributions, Cricket</li>
+        <li><strong>Favorite Books:</strong> Atomic Habits, Clean Code, The Pragmatic Programmer</li>
+        <li><strong>Philosophy:</strong> "Write code that is easy to delete, not easy to extend"</li>
+        <li><strong>Favorite Quote:</strong> "Code is like humor. When you have to explain it, it's bad." - Cory House</li>
+      </ul>
+    </section>
+
+    <!-- Location -->
+    <section id="location">
+      <h2>My Location</h2>
+      <p>Currently based in Boisar, Palghar, Maharashtra, India - a growing industrial town near Mumbai.</p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.222981040234!2d72.76395031538496!3d19.25175338699693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b13affffffff%3A0xfffffffffffffff!2sBoisar!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form id="contact-form" class="contact-form">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required class="input input-bordered w-full">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required class="input input-bordered w-full">
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required class="textarea textarea-bordered w-full"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Contact Links -->
+    <section id="contact-links">
+      <h2>Connect With Me</h2>
+      <div class="social-links">
+        <a href="mailto:123manoj2129@sjcem.edu.in" aria-label="Email" class="btn btn-circle"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Chavanmanoj" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="btn btn-circle"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/manoj-chavan-01615a359" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="btn btn-circle"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://twitter.com/manojchavan" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="btn btn-circle"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/manojchavan" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="btn btn-circle"><i class="fab fa-instagram"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to Top Button -->
+  <a id="back-to-top" href="#welcome" aria-label="Back to top" class="btn btn-circle fixed bottom-8 right-8">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer class="footer p-10 bg-neutral text-neutral-content">
+    <div>
+      <span class="footer-title">Services</span> 
+      <a class="link link-hover">Web Development</a>
+      <a class="link link-hover">App Development</a>
+      <a class="link link-hover">UI/UX Design</a>
+      <a class="link link-hover">Consulting</a>
+    </div> 
+    <div>
+      <span class="footer-title">Company</span> 
+      <a class="link link-hover">About me</a>
+      <a class="link link-hover">Contact</a>
+      <a class="link link-hover">Projects</a>
+      <a class="link link-hover">Testimonials</a>
+    </div> 
+    <div>
+      <span class="footer-title">Legal</span> 
+      <a href="privacy.html" class="link link-hover">Privacy policy</a>
+      <a href="terms.html" class="link link-hover">Terms of use</a>
+      <a href="cookies.html" class="link link-hover">Cookie policy</a>
+    </div>
+    <div>
+      <span class="footer-title">Newsletter</span> 
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Enter your email address</span>
+        </label> 
+        <div class="relative">
+          <input type="text" placeholder="username@site.com" class="input input-bordered w-full pr-16"> 
+          <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  <script>
+    // Loading animation
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading-spinner').style.display = 'none';
+      }, 1000);
+    });
+
+    // Initialize Cookie Consent
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#1e1e1e" },
+        button: { background: "#6e8efb" }
+      },
+      theme: "classic",
+      content: {
+        message: "This website uses cookies to enhance your experience.",
+        dismiss: "Got it!",
+        link: "Learn more",
+        href: "privacy.html"
+      }
+    });
+
+    // Theme toggle with localStorage
+    const toggleBtn = document.getElementById("theme-toggle");
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = localStorage.getItem("theme") || (prefersDark ? "dark" : "light");
+
+    if (currentTheme === "dark") {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = "☀️ Toggle Theme";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem("theme", newTheme);
+      toggleBtn.textContent = newTheme === "dark" ? "☀️ Toggle Theme" : "🌙 Toggle Theme";
+    });
+
+    // Hamburger menu toggle
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('active');
+      document.getElementById('hamburger').classList.toggle('active');
+    });
+
+    // Scroll-to-top visibility
+    window.addEventListener('scroll', () => {
+      const backToTop = document.getElementById('back-to-top');
+      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    // Project data
+    const projects = [
+      {
+        title: "E-commerce Platform",
+        description: "Full-stack e-commerce solution with React frontend and Node.js backend.",
+        technologies: ["React", "Node.js", "MongoDB"],
+        link: "https://github.com/Chavanmanoj/ecommerce-platform"
+      },
+      {
+        title: "Task Management App",
+        description: "Kanban-style task management application with drag-and-drop functionality.",
+        technologies: ["React", "Firebase", "Material UI"],
+        link: "https://github.com/Chavanmanoj/task-manager"
+      },
+      {
+        title: "Weather Dashboard",
+        description: "Real-time weather information with 5-day forecast using WeatherAPI.",
+        technologies: ["JavaScript", "API Integration", "CSS3"],
+        link: "https://github.com/Chavanmanoj/weather-dashboard"
+      },
+      {
+        title: "Blog CMS",
+        description: "Content management system for bloggers with markdown support.",
+        technologies: ["Python", "Django", "PostgreSQL"],
+        link: "https://github.com/Chavanmanoj/blog-cms"
+      }
+    ];
+
+    // Render projects
+    function renderProjects() {
+      const projectContainer = document.getElementById('project-list');
+      projectContainer.innerHTML = '';
+      
+      projects.forEach(project => {
+        const projectEl = document.createElement('div');
+        projectEl.className = 'card bg-base-100 shadow-xl';
+        projectEl.innerHTML = `
+          <div class="card-body">
+            <h3 class="card-title">${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="badge badge-outline">${project.technologies.join(' • ')}</div>
+            <div class="card-actions justify-end">
+              <a href="${project.link}" target="_blank" class="btn btn-primary btn-sm">View Project</a>
+            </div>
+          </div>
+        `;
+        projectContainer.appendChild(projectEl);
+      });
+    }
+
+    // Form submission with localStorage
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value,
+        timestamp: new Date().toISOString()
+      };
+      
+      // Store form data
+      const submissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
+      submissions.push(formData);
+      localStorage.setItem('contactSubmissions', JSON.stringify(formData));
+      
+      // Show success message
+      alert('Thank you for your message! I will get back to you soon.');
+      contactForm.reset();
+      
+      // Optional: Send to server
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      .catch(error => console.error('Error:', error));
+    });
+
+    // Visitor counter using localStorage
+    const updateVisitorCounter = () => {
+      let count = localStorage.getItem('visitorCount') || 0;
+      count = parseInt(count) + 1;
+      localStorage.setItem('visitorCount', count);
+      document.getElementById('visitor-counter').textContent = count;
+    };
+    
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+      updateVisitorCounter();
+    });
+  </script>
+</body>
+</html>
